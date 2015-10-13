@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="criminalsApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Infamous Criminals</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/criminalsController.js"></script>
+</head>
+<body>
+  <section ng-controller="CriminalsController as criminals">
+    <h1>Infamous Criminals</h1>
+    
+    <ul id="criminals">
+      <li ng-repeat="criminal in criminals.all">
+        <span class="status" ng-class="{'alive': criminal.status == 'Alive', 'dead': criminal.status == 'Dead' }">
+        {{ criminal.status }}</span>
+        <b>{{ criminal.name }}</b>
+        <em>{{ criminal.location }}</em>
+        <button class="delete" ng-click="criminals.deleteCriminal(criminal)">x</button>
+        <button class="delete" ng-click="criminals.selectCriminal(criminal)">u</button>
+      </li>
+    </ul>
+
+      <form id="newCriminal" ng-submit='criminals.addCriminal()'>
+        <div>
+          <label for="new-criminal-name">Name</label>
+          <input type="text" id="new-criminal-name" placeholder="Prof. Moriarty" ng-model='criminals.newCriminal.name'>
+        </div>
+        <div>
+          <label for="new-criminal-location">Location</label>
+          <input type="text" id="new-criminal-location" placeholder="Arkansas, SC, USA" ng-model='criminals.newCriminal.location'>
+        </div>
+        <div>
+          <label for="new-criminal-status">Status</label>
+          <select name="singleSelect" id="new-criminal-status" ng-model="criminals.newCriminal.status">
+            <option value="">--- Please select one ---</option> <!-- not selected / blank option -->
+            <option value="Alive">Alive</option> <!-- interpolation -->
+            <option value="Dead">Dead</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div>
+          <input type="submit" value="Add Criminal">
+        </div>
+      </form>
+
+
+
+
+
+    <div ng-if="criminals.oneCriminal">
+      <form id="updateCriminal" ng-submit='criminals.updateCriminal(oneCriminal)'>      
+        <div>
+          <label for="update-criminal-name">Update Name</label>
+          <input type="text" id="update-criminal-name"
+           ng-model="criminals.oneCriminal.name">
+        </div>
+        
+
+        <div>
+          <label for="update-criminal-location">Update Location</label>
+          <input type="text" id="update-criminal-location" ng-model='criminals.oneCriminal.location'>
+        </div>
+        <div>
+          <label for="update-criminal-status">Update Status</label>
+          <select name="singleSelect" id="update-criminal-status" ng-model="criminals.oneCriminal.status">
+            <option value="">--- Please select one ---</option> <!-- not selected / blank option -->
+            <option value="Alive">Alive</option> <!-- interpolation  --> 
+            <option value="Dead">Dead</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+
+        <div>
+          <input type="submit" value="Update Criminal">
+        </div>
+      </form>
+    </div>
+
+  </section>
+  
+</body>
+</html>
