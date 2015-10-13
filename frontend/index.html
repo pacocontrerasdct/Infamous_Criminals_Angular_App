@@ -19,11 +19,14 @@
         <b>{{ criminal.name }}</b>
         <em>{{ criminal.location }}</em>
         <button class="delete" ng-click="criminals.deleteCriminal(criminal)">x</button>
-        <button class="delete" ng-click="criminals.selectCriminal(criminal)">u</button>
+        <button class="delete" 
+          ng-click="criminals.selectCriminal(criminal)">u</button>
       </li>
     </ul>
 
-      <form id="newCriminal" ng-submit='criminals.addCriminal()'>
+    <div id="form-new"  class="">
+      <form id="newCriminal"
+        ng-submit='criminals.addCriminal()'>
         <div>
           <label for="new-criminal-name">Name</label>
           <input type="text" id="new-criminal-name" placeholder="Prof. Moriarty" ng-model='criminals.newCriminal.name'>
@@ -45,20 +48,17 @@
           <input type="submit" value="Add Criminal">
         </div>
       </form>
-
-
-
-
-
-    <div ng-if="criminals.oneCriminal">
+    </div>
+    
+    <div id="form-update"  class=""
+        ng-if="criminals.oneCriminal"
+        ng-class="">
       <form id="updateCriminal" ng-submit='criminals.updateCriminal(oneCriminal)'>      
         <div>
           <label for="update-criminal-name">Update Name</label>
           <input type="text" id="update-criminal-name"
            ng-model="criminals.oneCriminal.name">
         </div>
-        
-
         <div>
           <label for="update-criminal-location">Update Location</label>
           <input type="text" id="update-criminal-location" ng-model='criminals.oneCriminal.location'>
@@ -72,9 +72,8 @@
             <option value="Unknown">Unknown</option>
           </select>
         </div>
-
         <div>
-          <input type="submit" value="Update Criminal">
+          <input type="submit" value="Update Criminal"  ng-class="{ 'fadeOut': true }">
         </div>
       </form>
     </div>

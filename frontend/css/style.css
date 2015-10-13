@@ -17,7 +17,7 @@ body {
 h1 {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 4.8rem;
-  margin: 4.8rem auto 0;
+  margin: 2.8rem auto 0;
   letter-spacing: -2px;
 }
 
@@ -76,12 +76,20 @@ span.status.alive {
   background: green;
 }
 
-form#newCriminal, form#updateCriminal {
+form#newCriminal {
   border: 2px solid black;
   border-radius: 4px;
   padding: 1.8rem 1rem 0.618rem;
   max-width: 300px;
   margin-top: 2.4rem;
+}
+form#updateCriminal {
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 1.8rem 1rem 0.618rem;
+  max-width: 500px;
+  margin-top: 2.4rem;
+  margin-left: 1.4rem;
 }
 
 form#newCriminal div, form#updateCriminal div {
@@ -134,3 +142,51 @@ form#newCriminal input[type=submit]:focus, form#updateCriminal input[type=submit
   box-shadow: none;
   outline: none;
 }
+
+#form-update {
+  animation-name: fadeIn;
+  animation-duration: 5s;
+  display: block;
+  float: left;
+}
+#form-new {
+  animation-name: fadeIn;
+  animation-duration: 5s;
+  display: block;
+  float: left;
+}
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+}
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 2s;
+  display: none;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+/*  80% {
+    opacity: 0.5;
+  }*/
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+/*  80% {
+    opacity: 0.5;
+  }*/
+  100% {
+    opacity: 0;
+  }
+}
+
+
